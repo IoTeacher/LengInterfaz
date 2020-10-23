@@ -24,7 +24,7 @@ Al ser un lenguaje de bajo nivel, presenta como principal característica la fle
 ### 1.1.3. El entorno
 Los pasos habituales para hacer un programa son los siguientes: lo primero es escribir el programa en el lenguaje fuente. Traducirlo a lenguaje máquina. Este genera un fichero con la traducción de dicho programa, pero todavía no es un programa ejecutable. Un fichero ejecutable contiene el programa traducido más una serie de códigos que debe tener todo programa que vaya a ser ejecutado en una máquina determinada. El encargado de unir el código del programa con el código de estas librerías es un programa llamado montador que genera el programa ejecutable.
 
-![](https://github.com/JacoboRosas/LengInterfaz/blob/main/1.png)
+![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/1.png)
 
 Durante el proceso de creación de un programa se suelen producir errores. Hay dos tipos de errores: los **sintácticos** o detectables en tiempo de traducción y los errores **semánticos** o detectables en tiempo de ejecución.
 
@@ -47,7 +47,7 @@ En la zona de datos, las etiquetas pueden representar variables, constantes y ca
 **Instrucciones**
 Las instrucciones del **as**  responden al formato general:
 
-![](https://github.com/JacoboRosas/LengInterfaz/blob/main/images/2.png)
+![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/2.png)
 
 El Campo *etiqueta*, si aparece, debe estar formado por una cadena alfanumérica. La cadena no debe comenzar con un dígito y no se puede utilizar como cadena alguna palabra reservada del **as** ni nombre de registro del microprocesador.
 
@@ -141,10 +141,10 @@ Recordemos que cuando se representa cualquier dato en memoria, éste tiene un va
 Las instrucciones de desplazamiento pueden ser lógicas o aritméticas. Los desplazamientos lógicos desplazan los bit del registro fuente introduciendo ceros (uno o más de uno). El último bit que sale del registro fuente se almacena en el flag C. El desplazamiento aritmético hace lo mismo, pero manteniendo el signo.
 
 **Instrucciones de desplazamiento lógico**
-![](https://github.com/JacoboRosas/LengInterfaz/blob/main/images/3.png)
+![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/3.png)
 
 **Instrucciones de desplazamiento aritmético**
-![](https://github.com/JacoboRosas/LengInterfaz/blob/main/images/4.png)
+![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/4.png)
 
 Las instrucciones de rotación también desplazan, pero el bit que sale del valor se realimenta. No existe ninguna instrucción para rotar hacia la izquierda ROL, ya que puede simularse con la de rotación a la derecha ROR que sí existe.
 Las instrucciones de rotación con el carry funcionan de manera similar, pero el bit que entra es el que había en el flag C y el que sale va a parar al flag C.  Estas instrucciones sólo rotan un bit, al contrario que las anteriores que
@@ -232,7 +232,7 @@ Tercer y último caso de direccionamiento preindexado. Al igual que antes, desgl
 **2.1.2. Tipos de datos**
 Tipos de datos básicos. En la siguiente tabla se recogen los diferentes tipos de datos básicos que podrán aparecer en los ejemplos, así como su tamaño y rango de representación.
 
-![](https://github.com/JacoboRosas/LengInterfaz/blob/main/images/6.png)
+![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/6.png)
 
 **Punteros.** Un puntero siempre ocupa 32 bits y contiene una dirección de memoria
 

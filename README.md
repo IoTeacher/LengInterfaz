@@ -1,5 +1,8 @@
 #  Lectura y ejercicios de ARM32 del ebook OpenSource
 
+<a href="https://cooltext.com"><img src="https://images.cooltext.com/5474865.png" width="353" height="74" alt="RESUMEN" /></a>
+<br />Image by <a href="https://cooltext.com">Cool Text: Free Graphics Generator</a> - <a href="https://cooltext.com/Edit-Logo?LogoID=3664571937">Edit Image</a>
+
 ## 1.1. Lectura previa
 
 ### 1.1.1. Características generales de la arquitectura ARM

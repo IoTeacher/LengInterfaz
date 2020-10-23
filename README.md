@@ -44,7 +44,7 @@ En la zona de datos, las etiquetas pueden representar variables, constantes y ca
 **Instrucciones**
 Las instrucciones del **as**  responden al formato general:
 
-![IMG2](https://github.com/JacoboRosas/LengInterfaz/blob/main/2.png)
+![IMG2](https://github.com/JacoboRosas/LengInterfaz/blob/main/images/2.png)
 
 El Campo *etiqueta*, si aparece, debe estar formado por una cadena alfanumérica. La cadena no debe comenzar con un dígito y no se puede utilizar como cadena alguna palabra reservada del **as** ni nombre de registro del microprocesador.
 
@@ -192,3 +192,147 @@ Un método para determinar si una constante entra o no en una instrucción mov e
 
 **Direccionamiento a memoria, sin actualizar registro puntero.** Es la forma más sencilla y admite 4 variantes. Después del acceso a memoria ningún registro implicado en el cálculo de la dirección se modifica.
 
+ - [Rx, #+inmediato] [Rx, #-inmediato]
+ Simplemente añade (o sustrae) un valor inmediato al registro dado para
+calcular la dirección
+ - [Rx, +Ry] [Rx, -Ry]
+ Parecido al anterior pero en lugar de un inmediato emplea otro registro. Útil en el caso de queramos mantener fijo el registro Rx y movernos con Ry, o bien para acceder a desplazamientos mayores a 4095.
+ - [Rx, +Ry, operación_desp #inmediato] [Rx, -Ry, operación_desp  #inmediato]
+ En este caso aplicamos una operación de desplazamiento o rotación sobre
+el segundo registro Ry.
+
+**Direccionamiento a memoria, actualizando registro puntero.** En este modo de direccionamiento, el registro que genera la dirección se actualiza con la propia dirección.  De esta forma podemos recorrer un array con un sólo registro sin necesidad de hacer el incremento del puntero en una instrucción aparte. Los tres siguientes tipos
+son los postindexados.
+
+ - [Rx], #+inmediato [Rx], #-inmediato
+ Una notación muy parecida a la versión que no actualiza registro, la única diferencia es que la constante de desplazamiento queda fuera de los corchetes. 
+ - [Rx], +Ry [Rx], -Ry
+ Igual que antes pero con registro en lugar de inmediato.
+
+ - [Rx], +Ry, operación_desp #inmediato [Rx], -Ry, operación_desp #inmediato
+   Nótese que en todos los modos postindexados encerramos entre llaves el primer registro, que es el que se va a utilizar en la instrucción de lectura o escritura en memoria.
+   
+Ya hemos visto la notación postindexada. Veamos ahora los tres modos preindexados.
+
+ - [Rx, #+inmediato]! [Rx, #-inmediato]!
+ La idea en todos los casos es encerrar entre corchetes la dirección que se
+va a usar en la instrucción. Para diferenciarlo del caso que no actualiza
+el registro le añadimos un ! al final.
+
+ - [Rx, +Ry]! [Rx, -Ry]!
+Similar al anterior pero usando Ry en lugar de inmediato.
+
+ - [Rx, +Ry, operación_desp #inmediato]! [Rx, -Ry, operación_desp
+   #inmediato]!
+Tercer y último caso de direccionamiento preindexado. Al igual que antes, desgloso en dos instrucciones para ver el funcionamiento exacto.
+
+**2.1.2. Tipos de datos**
+Tipos de datos básicos. En la siguiente tabla se recogen los diferentes tipos de datos básicos que podrán aparecer en los ejemplos, así como su tamaño y rango de representación.
+
+![IMG6](https://github.com/JacoboRosas/LengInterfaz/blob/main/images/6.png)
+
+**Punteros.** Un puntero siempre ocupa 32 bits y contiene una dirección de memoria
+
+**Vectores**. Todos los elementos de un vector se almacenan en un único bloque de memoria a partir de una dirección determinada. Los diferentes elementos se almacenan en posiciones consecutivas, de manera que el elemento i está entre los i-1 e i+1.  Los vectores están definidos siempre a partir de la posición 0.
+
+**Matrices bidimensionales**. Una matriz bidimensional de N×M elementos se almacena en un único bloque de memoria. Interpretaremos una matriz de N×M como una matriz con N filas de M elementos cada una. Si cada elemento de la matriz ocupa B bytes, la matriz ocupará un bloque de M ×N ×B bytes
+
+**2.1.3. Instrucciones de salto**
+Las instrucciones de salto pueden producir saltos incondicionales (b y bx) o saltos condicionales. Cuando saltamos a una etiqueta empleamos b, mientras que si queremos saltar a un registro lo hacemos con bx. La variante de registro bx la solemos usar como instrucción de retorno de subrutina, raramente tiene otros usos. En los saltos condicionales añadimos dos o tres letras a la (b/bx), mediante las cuales condicionamos si se salta o no dependiendo del estado de los flags. Estas condiciones se pueden añadir a cualquier otra instrucción, aunque la mayoría de las veces lo que nos interesa es controlar el flujo del programa y así ejecutar o no un grupo de instrucciones dependiendo del resultado de una operación.
+ 
+**2.1.4. Estructuras de control de alto nivel**.
+Veremos cómo se traducen a ensamblador las estructuras de control de alto nivel que definen un bucle, así como las condicionales (if-else). Las estructuras for y while se pueden ejecutar un mínimo de 0 iteraciones. Para programar en ensamblador estas estructuras se utilizan instrucciones de salto condicional. Previo a la instrucción de salto es necesario evaluar la condición del bucle o de la sentencia if, mediante instrucciones aritméticas o lógicas, con el fin de actualizar los flags de estado. 
+
+**Estructura del for y while en C.** 
+```c
+int vi , vf , i ;
+for ( i= vi ; i <= vf ; i ++ ){
+/* Cuerpo del bucle */
+}
+i= vi ;
+while ( i <= vf ){
+/* Cuerpo del bucle */
+i ++;
+}
+```
+**Traducción de las estructuras for y while.**
+```bash
+             ldr r1, = vi
+             ldr r1, [ r1 ]
+             ldr r2, = vf
+             ldr r2, [ r2 ]
+bucle :      cmp r1, r2
+             bhi salir
+             /* Cuerpo
+                   del
+                   bucle */
+             add r1, r1, # 1
+             b bucle
+salir :
+```
+**2.1.5. Compilación a ensamblador**
+Normalmente los compiladores crean código compilado en un único paso. En el caso de gcc este proceso se hace en dos fases: en una primera se pasa de C a ensamblador, y en una segunda de ensambladador a código compilado.
+```c
+# include < stdio .h >
+void main ( void ){
+int i;
+for ( i= 0; i <5; i ++ ){ 
+printf ( " %d\n " , i );
+} 
+}
+```
+Después de crear el fichero tipos3.s, lo compilamos con este comando.
+```c
+gcc -Os -S -o tipos3a.s tipos3.c
+```
+Con el parámetro -S forzamos la generación del .s en lugar del .o y con -Os le indicamos al compilador que queremos optimizar en tamaño, es decir que queremos código ensamblador lo más pequeño posible, sin importar el rendimiento del mismo.
+### 2.2. Enunciados de la práctica
+**2.2.1. Suma de elementos de un vector**
+En este primer apartado, estudiaremos un bucle que calcula la suma de todos los elementos de un vector. El vector se denomina vector y tiene 5 elementos de tipo int (entero de 32 bits). Los algoritmos que realizan la suma de sus elementos, tanto en C como en ensamblador, se pueden encontrar en los listados 2.8 y 2.9.
+
+**Suma de elementos de un vector (tipos4.c)**
+```c
+# include < stdio .h >
+void main ( void ){
+   int i , suma ;
+   int vector [5]= {128 , 32 , 100 , -30 , 124};
+   for ( suma = i = 0; i <5; i ++ ){
+      suma += vector [i ]; 
+   }
+   printf (" La suma es %d \n" , suma );
+)
+```
+**Suma de elementos de un vector (tipos4.s)**
+```bash
+data
+var1 : .asciz " La suma es %d \n"
+var2 : .word 128, 32, 100, - 30, 124
+
+.text
+.global main
+
+/* Salvamos registros */
+main : push { r4, lr }
+
+/* Inicializamos variables y apuntamos r2 a var2 */
+     mov r0, # 5
+     mov r1, # 0
+     ldr r2, = var2
+     
+/* Bucle que hace la suma */
+bucle : ldr r3, [ r2 ] , # 4
+     add r1, r1, r3
+     subs r0, r0, #1
+     bne bucle
+
+/* Imprimimos resultado */
+     ldr r0, = var1
+     bl printf
+     
+/* Recuperamos registros y salimos */
+     pop { r4, lr }
+     bx lr
+```
+Si analizamos el código en ensamblador (listado 2.9), veremos que se recorre todo el vector con el registro r0, realizándose la suma sobre el registro r1. A diferencia de ejemplos anteriores decrementamos de 5 a 0, así nos ahorramos una comparación, ya que la instrucción subs detecta cuando hemos llegado al valor cero activando el flag Z.
+
+En r2 vamos recorriendo el vector elemento a elemento mediante un modo postindexado que apunta al siguiente elemento una vez leemos el actual con ldr. Una vez calculada la suma en r1, la mostramos por pantalla mediante una llamada a printf.

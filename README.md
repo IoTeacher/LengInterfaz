@@ -141,9 +141,11 @@ Recordemos que cuando se representa cualquier dato en memoria, éste tiene un va
 Las instrucciones de desplazamiento pueden ser lógicas o aritméticas. Los desplazamientos lógicos desplazan los bit del registro fuente introduciendo ceros (uno o más de uno). El último bit que sale del registro fuente se almacena en el flag C. El desplazamiento aritmético hace lo mismo, pero manteniendo el signo.
 
 **Instrucciones de desplazamiento lógico**
+<br>
 ![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/3.png)
 
 **Instrucciones de desplazamiento aritmético**
+<br>
 ![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/4.png)
 
 Las instrucciones de rotación también desplazan, pero el bit que sale del valor se realimenta. No existe ninguna instrucción para rotar hacia la izquierda ROL, ya que puede simularse con la de rotación a la derecha ROR que sí existe.

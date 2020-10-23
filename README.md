@@ -341,3 +341,6 @@ bucle : ldr r3, [ r2 ] , # 4
 Si analizamos el código en ensamblador (listado 2.9), veremos que se recorre todo el vector con el registro r0, realizándose la suma sobre el registro r1. A diferencia de ejemplos anteriores decrementamos de 5 a 0, así nos ahorramos una comparación, ya que la instrucción subs detecta cuando hemos llegado al valor cero activando el flag Z.
 
 En r2 vamos recorriendo el vector elemento a elemento mediante un modo postindexado que apunta al siguiente elemento una vez leemos el actual con ldr. Una vez calculada la suma en r1, la mostramos por pantalla mediante una llamada a printf.
+
+<a href="https://cooltext.com"><img src="https://images.cooltext.com/5474866.png" width="413" height="74" alt="PRACTICAS" /></a>
+<br />Image by <a href="https://cooltext.com">Cool Text: Logo and Button Generator</a> - <a href="https://cooltext.com/Edit-Logo?LogoID=3664576309">Create Your Own Logo</a>

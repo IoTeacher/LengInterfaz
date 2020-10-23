@@ -345,7 +345,7 @@ En r2 vamos recorriendo el vector elemento a elemento mediante un modo postindex
 <a href="https://cooltext.com"><img src="https://images.cooltext.com/5474866.png" width="413" height="74" alt="PRACTICAS" /></a>
 <br />Image by <a href="https://cooltext.com">Cool Text: Logo and Button Generator</a> - <a href="https://cooltext.com/Edit-Logo?LogoID=3664576309">Create Your Own Logo</a>
 
-```as
+```assembly
 .data
 var1 : .word 3
 var2 : .word 4

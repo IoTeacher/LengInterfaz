@@ -44,7 +44,7 @@ En la zona de datos, las etiquetas pueden representar variables, constantes y ca
 **Instrucciones**
 Las instrucciones del **as**  responden al formato general:
 
-![IMG2](https://github.com/JacoboRosas/LengInterfaz/blob/main/2.png)
+![IMG2](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/2.png)
 
 El Campo *etiqueta*, si aparece, debe estar formado por una cadena alfanumérica. La cadena no debe comenzar con un dígito y no se puede utilizar como cadena alguna palabra reservada del **as** ni nombre de registro del microprocesador.
 

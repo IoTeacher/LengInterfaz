@@ -44,7 +44,7 @@ En la zona de datos, las etiquetas pueden representar variables, constantes y ca
 **Instrucciones**
 Las instrucciones del **as**  responden al formato general:
 
-![IMG2](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/2.png)
+![IMG2](https://github.com/JacoboRosas/LengInterfaz/blob/main/2.png)
 
 El Campo *etiqueta*, si aparece, debe estar formado por una cadena alfanumérica. La cadena no debe comenzar con un dígito y no se puede utilizar como cadena alguna palabra reservada del **as** ni nombre de registro del microprocesador.
 
@@ -133,3 +133,62 @@ Puedes emplear disas (pero no disa) como comando abreviado. En realidad todos lo
 
 **1.2.2. Enteros y naturales**
 Recordemos que cuando se representa cualquier dato en memoria, éste tiene un valor explícito y un valor implícito. En este apartado queremos que veais la diferencia entre el valor explícito y el valor implícito interpretado como un natural y como un entero.
+
+**1.2.4. Rotaciones y desplazamientos**
+Las instrucciones de desplazamiento pueden ser lógicas o aritméticas. Los desplazamientos lógicos desplazan los bit del registro fuente introduciendo ceros (uno o más de uno). El último bit que sale del registro fuente se almacena en el flag C. El desplazamiento aritmético hace lo mismo, pero manteniendo el signo.
+
+**Instrucciones de desplazamiento lógico**
+![IMG3](https://github.com/JacoboRosas/LengInterfaz/blob/main/images/3.png)
+
+**Instrucciones de desplazamiento aritmético**
+![IMG4](https://github.com/JacoboRosas/LengInterfaz/blob/main/images/4.png)
+
+Las instrucciones de rotación también desplazan, pero el bit que sale del valor se realimenta. No existe ninguna instrucción para rotar hacia la izquierda ROL, ya que puede simularse con la de rotación a la derecha ROR que sí existe.
+Las instrucciones de rotación con el carry funcionan de manera similar, pero el bit que entra es el que había en el flag C y el que sale va a parar al flag C.  Estas instrucciones sólo rotan un bit, al contrario que las anteriores que
+podían rotar/desplazar varios.
+
+También podemos forzar el flag C o cualquier otro flag al valor que queramos con la siguiente instrucción.
+```bash
+msr cpsr_f, # valor
+```
+Todas las instrucciones de rotación en realidad son subinstrucciones que el ensamblador traduce a una instrucción mov. En realidad las dos siguientes instrucciones son totalmente equivalentes.
+
+```bash
+LSRs r0, r0,#1 
+movs r0, r0, LSR #1
+```
+Pero se tiende a escoger siempre la más sencilla, en este caso la primera.
+
+**1.2.5. Instrucciones de multiplicación**
+Las instrucciones de multiplicación admiten muchas posibilidades, debido a que es una operación en la cual el resultado tiene el doble de bits que cada operando.
+
+| Instrucción | Bits | Nombre |
+|--|--|--|
+| mul | 32=32x32 | Multiplicación truncada. |
+| umull | 64=32x32 | Multiplicación sin signo de 32bits. |
+| smull | 64=32x32 | Multiplicación con signo de 32bits. |
+| smulw* | 32=32x16 | Multiplicación con signo de 32x16bits. |
+| smul** | 32=16x16 | Multiplicación con signo de 16x16bits. |
+
+# Capítulo 2 Tipos de datos y sentencias de alto nivel
+### 2.1.1. Modos de direccionamiento del ARM
+En la arquitectura ARM los accesos a memoria se hacen mediante instrucciones específicas ldr y str. El resto de instrucciones toman operandos desde registros o valores inmediatos, sin excepciones. Existen otras arquitecturas como la Intel x86, donde las instrucciones de procesado nos permiten leer o escribir directamente de memoria. Normalmente se opta por direccionamiento a memoria en instrucciones de procesado en arquitecturas con un número reducido de registros, donde se emplea la memoria como almacén temporal.
+
+**Direccionamiento inmediato**. El operando fuente es una constante, formando
+parte de la instrucción.
+```bash
+mov r0, # 1
+add r2, r3, #4
+```
+**Direccionamiento inmediato con desplazamiento o rotación**. Es una variante del anterior en la cual se permiten operaciones intermedias sobre los registros.
+```bash
+mov r1, r2, LSL #1 /* r1 <- (r2*2) */
+mov r1, r2, LSL #2 /* r1 <- (r2*4) */
+mov r1, r3, ASR #3 /* r1 <- (r3/8) */
+```
+Estas instrucciones también se usan implicitamente para la creación de constantes, rotando o desplazando constantes más pequeñas de forma transparente al usuario. Como todas las instrucciones ocupan 32 bits, es técnicamente imposible que podamos cargar en un registro cualquier constante de 32 bits con la instrucción mov.
+
+Un método para determinar si una constante entra o no en una instrucción mov es pasar la constante a binario y quitar los ceros de la izquierda y de la derecha y contar el número de bits resultante. Si el número de bits es menor o igual que 8, la constante entra en una instrucción mov.
+
+**Direccionamiento a memoria, sin actualizar registro puntero.** Es la forma más sencilla y admite 4 variantes. Después del acceso a memoria ningún registro implicado en el cálculo de la dirección se modifica.
+

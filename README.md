@@ -368,11 +368,11 @@ puntero_var1 : .word var1
 puntero_var2 : .word var2
 puntero_var3 : .word var3
 ```
-![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/8.png)
+
 
 **Ejemplo 2**
 <br>
-![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/9.png)
+
 ```assembly
 .data
 
@@ -393,7 +393,7 @@ main :     ldr r1, = var1
 
 **Ejemplo 3**
 <br>
-![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/10.png)
+
 ```bash
 .text
 .global main
@@ -411,7 +411,7 @@ main :     mov r2, # 0b11110000
 
 **Ejemplo 4**
 <br>
-![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/11.png)
+
 ```bash
 .data
 
@@ -443,7 +443,7 @@ main :    ldr r0, = var1
 
 **Ejemplo 5**
 <br>
-![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/12.png)
+
 ```bash
 .data
 var1 : .word 0x12345678
@@ -469,7 +469,7 @@ main :     ldr r0, = var1
 
 **Ejemplo 6**
 <br>
-![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/13.png)
+
 ```bash
 .data
 var1 : .asciz " %d\ 012 "
@@ -489,7 +489,7 @@ main :     push { r4, lr }
 
 **Ejemplo 7**
 <br>
-![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/14.png)
+
 ```bash
 .data
 
@@ -519,7 +519,6 @@ bucle :   ldr r3, [ r2 ] , # 4
 
 **Ejemplo 8**
 <br>
-![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/15.png)
 ```bash
 .data
 

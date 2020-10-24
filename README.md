@@ -388,3 +388,6 @@ puntero_var3 : .word var3
 **Ejemplo 7**
 
 ![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/14.png)
+
+**Ejemplo 8**
+![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/15.png)

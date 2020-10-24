@@ -349,6 +349,17 @@ En r2 vamos recorriendo el vector elemento a elemento mediante un modo postindex
 <br>
 ![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/Ejemplo1.png)
 ```assembly
+/*
+ @@
+ @@ Instituto Tecnologico de Tijuana
+ @@ Depto de Sistemas y Computación
+ @@ Ing. En Sistemas Computacionales
+ @@   
+ @@ Autor : Jacobo Rosas Jonathan Adalberto @nickname JacoboRosas
+ @@ Repositorio: http://github.com/JacoboRosas/Ejercicios
+ @@ Fecha de revisión: 10/23/2020
+ @@ 
+ */
 .data
 var1 : .word 3
 var2 : .word 4
@@ -377,6 +388,15 @@ puntero_var3 : .word var3
 <br>
 ![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/Ejemplo2.png)
 ```assembly
+ @@
+ @@ Instituto Tecnologico de Tijuana
+ @@ Depto de Sistemas y Computación
+ @@ Ing. En Sistemas Computacionales
+ @@   
+ @@ Autor : Jacobo Rosas Jonathan Adalberto @nickname JacoboRosas
+ @@ Repositorio: http://github.com/JacoboRosas/Ejercicios
+ @@ Fecha de revisión: 10/23/2020
+ @@ 
 .data
 
 var1 : .byte 0b00110010
@@ -397,7 +417,16 @@ main :     ldr r1, = var1
 **Ejemplo 3**
 <br>
 ![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/Ejemplo3.png)
-```bash
+```assembly
+ @@
+ @@ Instituto Tecnologico de Tijuana
+ @@ Depto de Sistemas y Computación
+ @@ Ing. En Sistemas Computacionales
+ @@   
+ @@ Autor : Jacobo Rosas Jonathan Adalberto @nickname JacoboRosas
+ @@ Repositorio: http://github.com/JacoboRosas/Ejercicios
+ @@ Fecha de revisión: 10/23/2020
+ @@ 
 .text
 .global main
 
@@ -415,7 +444,16 @@ main :     mov r2, # 0b11110000
 **Ejemplo 4**
 <br>
 ![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/Ejemplo4.png)
-```bash
+```assembly
+ @@
+ @@ Instituto Tecnologico de Tijuana
+ @@ Depto de Sistemas y Computación
+ @@ Ing. En Sistemas Computacionales
+ @@   
+ @@ Autor : Jacobo Rosas Jonathan Adalberto @nickname JacoboRosas
+ @@ Repositorio: http://github.com/JacoboRosas/Ejercicios
+ @@ Fecha de revisión: 10/23/2020
+ @@ 
 .data
 
 var1 : .word 0x80000000
@@ -447,7 +485,16 @@ main :    ldr r0, = var1
 **Ejemplo 5**
 <br>
 ![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/Ejemplo5.png)
-```bash
+```assembly
+ @@
+ @@ Instituto Tecnologico de Tijuana
+ @@ Depto de Sistemas y Computación
+ @@ Ing. En Sistemas Computacionales
+ @@   
+ @@ Autor : Jacobo Rosas Jonathan Adalberto @nickname JacoboRosas
+ @@ Repositorio: http://github.com/JacoboRosas/Ejercicios
+ @@ Fecha de revisión: 10/23/2020
+ @@ 
 .data
 var1 : .word 0x12345678
 var2 : .word 0x87654321
@@ -473,7 +520,16 @@ main :     ldr r0, = var1
 **Ejemplo 6**
 <br>
 ![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/Ejemplo6.png)
-```bash
+```assembly
+ @@
+ @@ Instituto Tecnologico de Tijuana
+ @@ Depto de Sistemas y Computación
+ @@ Ing. En Sistemas Computacionales
+ @@   
+ @@ Autor : Jacobo Rosas Jonathan Adalberto @nickname JacoboRosas
+ @@ Repositorio: http://github.com/JacoboRosas/Ejercicios
+ @@ Fecha de revisión: 10/23/2020
+ @@ 
 .data
 var1 : .asciz " %d\ 012 "
 
@@ -493,7 +549,16 @@ main :     push { r4, lr }
 **Ejemplo 7**
 <br>
 ![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/Ejemplo7.png)
-```bash
+```assembly
+ @@
+ @@ Instituto Tecnologico de Tijuana
+ @@ Depto de Sistemas y Computación
+ @@ Ing. En Sistemas Computacionales
+ @@   
+ @@ Autor : Jacobo Rosas Jonathan Adalberto @nickname JacoboRosas
+ @@ Repositorio: http://github.com/JacoboRosas/Ejercicios
+ @@ Fecha de revisión: 10/23/2020
+ @@ 
 .data
 
 var1 : .asciz " La suma es %d \n"
@@ -523,8 +588,18 @@ bucle :   ldr r3, [ r2 ] , # 4
 **Ejemplo 8**
 <br>
 ![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/Ejemplo8.png)
+<br>
 ![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/Ejemplo8.2.png)
-```bash
+```assembly
+ @@
+ @@ Instituto Tecnologico de Tijuana
+ @@ Depto de Sistemas y Computación
+ @@ Ing. En Sistemas Computacionales
+ @@   
+ @@ Autor : Jacobo Rosas Jonathan Adalberto @nickname JacoboRosas
+ @@ Repositorio: http://github.com/JacoboRosas/Ejercicios
+ @@ Fecha de revisión: 10/23/2020
+ @@ 
 .data
 
 var1 : .asciz " La suma es %lld \ n"

@@ -345,6 +345,8 @@ En r2 vamos recorriendo el vector elemento a elemento mediante un modo postindex
 <a href="https://cooltext.com"><img src="https://images.cooltext.com/5474866.png" width="413" height="74" alt="PRACTICAS" /></a>
 <br />Image by <a href="https://cooltext.com">Cool Text: Logo and Button Generator</a> - <a href="https://cooltext.com/Edit-Logo?LogoID=3664576309">Create Your Own Logo</a>
 
+**Ejemplo 1**
+
 ```assembly
 .data
 var1 : .word 3
@@ -366,3 +368,17 @@ puntero_var1 : .word var1
 puntero_var2 : .word var2
 puntero_var3 : .word var3
 ```
+![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/8.png)
+
+**Ejemplo 2**
+![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/9.png)
+**Ejemplo 3**
+![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/10.png)
+**Ejemplo 4**
+![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/11.png)
+**Ejemplo 5**
+![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/12.png)
+**Ejemplo 6**
+![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/13.png)
+**Ejemplo 7**
+![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/14.png)

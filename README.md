@@ -346,7 +346,8 @@ En r2 vamos recorriendo el vector elemento a elemento mediante un modo postindex
 <br />Image by <a href="https://cooltext.com">Cool Text: Logo and Button Generator</a> - <a href="https://cooltext.com/Edit-Logo?LogoID=3664576309">Create Your Own Logo</a>
 
 **Ejemplo 1**
-
+<br>
+![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/Ejemplo1.png)
 ```assembly
 .data
 var1 : .word 3
@@ -370,9 +371,11 @@ puntero_var3 : .word var3
 ```
 
 
+
+
 **Ejemplo 2**
 <br>
-
+![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/Ejemplo2.png)
 ```assembly
 .data
 
@@ -393,7 +396,7 @@ main :     ldr r1, = var1
 
 **Ejemplo 3**
 <br>
-
+![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/Ejemplo3.png)
 ```bash
 .text
 .global main
@@ -411,7 +414,7 @@ main :     mov r2, # 0b11110000
 
 **Ejemplo 4**
 <br>
-
+![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/Ejemplo4.png)
 ```bash
 .data
 
@@ -443,7 +446,7 @@ main :    ldr r0, = var1
 
 **Ejemplo 5**
 <br>
-
+![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/Ejemplo5.png)
 ```bash
 .data
 var1 : .word 0x12345678
@@ -469,7 +472,7 @@ main :     ldr r0, = var1
 
 **Ejemplo 6**
 <br>
-
+![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/Ejemplo6.png)
 ```bash
 .data
 var1 : .asciz " %d\ 012 "
@@ -489,7 +492,7 @@ main :     push { r4, lr }
 
 **Ejemplo 7**
 <br>
-
+![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/Ejemplo7.png)
 ```bash
 .data
 
@@ -519,6 +522,8 @@ bucle :   ldr r3, [ r2 ] , # 4
 
 **Ejemplo 8**
 <br>
+![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/Ejemplo8.png)
+![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/Ejemplo8.2.png)
 ```bash
 .data
 

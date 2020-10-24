@@ -371,23 +371,182 @@ puntero_var3 : .word var3
 ![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/8.png)
 
 **Ejemplo 2**
-
+<br>
 ![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/9.png)
+```assembly
+.data
+
+var1 : .byte 0b00110010
+       .align
+var2 : .byte 0b11000000
+       .align
+       
+.text
+.global main
+main :     ldr r1, = var1 
+           ldrsb r1, [ r1 ] 
+           ldr r2, = var2
+           ldrsb r2, [ r2 ]
+           add r0, r1, r2
+           bx lr
+```
+
 **Ejemplo 3**
-
+<br>
 ![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/10.png)
+```bash
+.text
+.global main
+
+main :     mov r2, # 0b11110000
+           mov r3, # 0b10101010 
+           and r0, r2, r3 
+           orr r1, r2, r3 
+           mvn r4, r0 
+           mov r0, # 0x80000000
+           tst r0, # 0x80000000
+           tst r0, # 0x40000000
+           bx lr
+```
+
 **Ejemplo 4**
-
+<br>
 ![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/11.png)
+```bash
+.data
+
+var1 : .word 0x80000000
+
+.text
+.global main
+main :    ldr r0, = var1 
+          ldr r1, [ r0 ] 
+          LSRs r1, r1, #1 
+          LSRs r1, r1, #3 
+          ldr r2, [ r0 ] 
+          ASRs r2, r2, #1 
+          ASRs r2, r2, #3
+          ldr r3, [ r0 ] 
+          RORs r3, r3, # 31
+          RORs r3, r3, # 31 
+          RORs r3, r3, # 24 
+          ldr r4, [ r0 ] 
+          msr cpsr_f, #0 
+          adcs r4, r4, r4 
+          adcs r4, r4, r4 
+          adcs r4, r4, r4 
+          msr cpsr_f, # 0x20000000 
+          adcs r4, r4, r4 
+          bx lr
+
+```
+
 **Ejemplo 5**
-
+<br>
 ![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/12.png)
+```bash
+.data
+var1 : .word 0x12345678
+var2 : .word 0x87654321
+var3 : .word 0x00012345
+.text
+.global main
+main :     ldr r0, = var1 
+           ldr r1, = var2 
+           ldr r2, = var3 
+           ldrh r3, [ r0 ] 
+           ldrh r4, [ r1 ] 
+           muls r5, r3, r4 
+           ldr r3, [ r0 ] 
+           ldr r4, [ r1 ] 
+           umull r5, r6, r3, r4 
+           smull r5, r6, r3, r4 
+           ldrh r3, [ r0 ] 
+           ldr r4, [ r2 ] 
+           smulwb r5, r3, r4 
+           smultt r5, r3, r4 
+```
+
 **Ejemplo 6**
-
+<br>
 ![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/13.png)
-**Ejemplo 7**
+```bash
+.data
+var1 : .asciz " %d\ 012 "
 
+.text
+.global main
+main :     push { r4, lr }
+           mov r4, # 0
+.L2 :      mov r1, r4
+           ldr r0, = var1
+           add r4, r4, # 1
+           bl printf
+           cmp r4, # 5
+           bne .L2
+           pop { r4, pc }
+```
+
+**Ejemplo 7**
+<br>
 ![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/14.png)
+```bash
+.data
+
+var1 : .asciz " La suma es %d \n"
+var2 : .word 128, 32, 100, - 30, 124
+
+.text
+.global main
+
+main :    push { r4, lr }
+
+          mov r0, # 5
+          mov r1, # 0
+          ldr r2, = var2
+
+bucle :   ldr r3, [ r2 ] , # 4
+          add r1, r1, r3
+          subs r0, r0, #1
+          bne bucle
+
+          ldr r0, = var1
+          bl printf
+
+          pop { r4, lr }
+          bx lr
+```
 
 **Ejemplo 8**
+<br>
 ![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/15.png)
+```bash
+.data
+
+var1 : .asciz " La suma es %lld \ n"
+var2 : .word 1600000000, - 100, 800000000, - 50, 200
+
+.text
+.global main
+
+main :     push { r4, r5, r6, lr }
+
+           mov r5, # 5
+           mov r2, # 0
+           mov r3, # 0
+           ldr r4, = var2
+
+bucle :    ldr r0, [ r4 ] , # 4
+           mov r1, r0, ASR # 31
+           adds r2, r2, r0
+           adc r3, r3, r1
+           subs r5, r5, #1
+           bne bucle
+
+           ldr r0, = var1
+           bl printf
+
+           pop { r4, r5, r6, lr }
+           bx lr
+```
+

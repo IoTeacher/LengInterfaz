@@ -1,3 +1,21 @@
+#   Tecnológico Nacional de México
+#   Instituto Tecnológico de Tijuana
+#        Subdirección Académica
+
+# Departamento de Sistemas y Computación
+# Ingeniería en Sistemas Computacionales
+# Lenguajes de interfaz 
+
+# Practica Bloque: 2
+# Objetivo: Demostrar el funcionamiento de la QUEMU compilando y ejecutando programas.
+
+
+# Jacobo Rosas Jonathan Adalberto - 18212201
+
+![](imagenes/1.png)
+# Profesor:
+# MC. René Solis Reyes
+# Semestre sep - ene 2020
 #  Lectura y ejercicios de ARM32 del ebook OpenSource
 
 <a href="https://cooltext.com"><img src="https://images.cooltext.com/5474865.png" width="353" height="74" alt="RESUMEN" /></a>

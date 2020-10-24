@@ -371,14 +371,20 @@ puntero_var3 : .word var3
 ![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/8.png)
 
 **Ejemplo 2**
+
 ![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/9.png)
 **Ejemplo 3**
+
 ![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/10.png)
 **Ejemplo 4**
+
 ![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/11.png)
 **Ejemplo 5**
+
 ![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/12.png)
 **Ejemplo 6**
+
 ![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/13.png)
 **Ejemplo 7**
+
 ![](https://github.com/JacoboRosas/LengInterfaz/blob/main/imagenes/14.png)
